@@ -1,0 +1,93 @@
+site_name: Documentation
+site_description: Documentation for k0rdent.
+site_author: Mirantis, Inc.
+
+docs_dir: docs/
+repo_name: GitHub
+repo_url: https://github.com/k0rdent/kcm
+
+copyright:
+  Copyright &copy; 2025 The k0rdent authors | Documentation distributed under <a href="https://creativecommons.org/licenses/by/4.0/legalcode.txt">CC-BY-4.0</a>.
+
+theme:
+  name: "material"
+  highlightjs: true
+  language: "en"
+  custom_dir: docs/custom_theme
+  favicon: img/k0s_social.png
+  logo: img/k0s_social.png
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+  features:
+    - toc.autohide
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search
+
+nav:
+  - Welcome to the k0rdent docs: index.md
+  - Guide to k0rdent documentation: guide_to_k0rdent_documentation.md
+  - k0rdent concepts:
+    - Why k0rdent?: why_k0rdent.md
+    - k0rdent architecture: k0rdent_architecture.md
+  - QuickStart:
+    - Guide to Quickstarts and Tutorials: guide_to_quickstarts_and_tutorials.md
+    - k0rdent pre-requisites: quickstart_1_k0rdent_prerequisites.md
+    - AWS infrastructure setup: quickstart_2_aws_infra_setup.md
+    - Deploy managed clusters on AWS: quickstart_3_deploy_managed_cluster_aws.md
+  - Tutorials:
+    - Upgrade a single cluster: tutorial_1_upgrade_single_cluster.md
+    - Install a ServiceTemplate into a single cluster: tutorial_2_install_service_template_single_cluster.md
+    - Install a ServiceTemplate into multiple clusters: tutorial_3_install_service_template_into_multiple_clusters.md
+
+
+markdown_extensions:
+  - pymdownx.highlight: {}
+  - pymdownx.superfences: {}
+  - pymdownx.inlinehilite: {}
+  - toc:
+      permalink: "#"
+      toc_depth: 3
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition
+  - def_list
+
+extra:
+  k8s_version: !!python/object/apply:os.getenv ["KUBERNETES_VERSION"]
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/k0sproject/k0s
+      name: k0s on GitHub
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/k0sproject
+      name: k0s on X
+    - icon: fontawesome/brands/medium
+      link: https://medium.com/k0sproject
+      name: k0s on Medium
+    - icon: fontawesome/brands/slack
+      link: https://kubernetes.slack.com/archives/C07VAPJUECS
+      name: k0s on the k8s slack
+    - icon: fontawesome/solid/link
+      link: https://k0sproject.io/
+      name: k0s Website
+  version:
+    provider: mike
+    default: stable
